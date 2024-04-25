@@ -2,7 +2,7 @@ package com.pp.coffeesale.app.service;
 
 
 import com.pp.coffeesale.app.repo.TestRepository;
-import com.pp.coffeesale.domain.Course.Test;
+import com.pp.coffeesale.domain.сourse.Test;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

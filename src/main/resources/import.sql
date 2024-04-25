@@ -1,0 +1,1 @@
+INSERT INTO Administrator VALUES (1,null, 'test@asd.com', 'Vlad', 'Password', 'HR');

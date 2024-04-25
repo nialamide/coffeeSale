@@ -1,8 +1,8 @@
 package com.pp.coffeesale.domain.users;
 
-import com.pp.coffeesale.domain.Course.Course;
 import com.pp.coffeesale.domain.Organization;
 import com.pp.coffeesale.domain.Request;
+import com.pp.coffeesale.domain.сourse.Course;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,6 +15,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "Administrator")
 public class Administrator {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +23,12 @@ public class Administrator {
 
     private String name;
 
-    @OneToMany(mappedBy = "hrId", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Column(unique = true)
+    private String email;
+
+    private String password;
+
+    @OneToMany(mappedBy = "hr", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Course> courses = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)

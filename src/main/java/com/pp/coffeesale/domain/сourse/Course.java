@@ -1,4 +1,4 @@
-package com.pp.coffeesale.domain.Course;
+package com.pp.coffeesale.domain.сourse;
 
 
 import com.pp.coffeesale.domain.users.Administrator;
@@ -35,7 +35,7 @@ public class Course {
 
     @ManyToOne
     @JoinColumn(name = "administrator_id")
-    private Administrator hrId;
+    private Administrator hr;
 
     @Enumerated(EnumType.STRING)
     private CourseState state;
@@ -49,6 +49,18 @@ public class Course {
 
     public void setLectures(Lecture lectures) {
         this.lectures.add(lectures);
+    }
+
+    public void setTests(Test tests) {
+        this.tests.add(tests);
+    }
+
+    public void replaceTest(List<Test> tests) {
+        this.tests = tests;
+    }
+
+    public void replaceLecture(List<Lecture> lectures) {
+        this.lectures = lectures;
     }
 }
 

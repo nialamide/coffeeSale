@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Все пользователи</title>
+</head>
+<body>
+<h1>
+    Список всех курсов
+</h1>
+<a data-th-href="@{/courses/create}">&lAarr; Создать новый курс </a>
+<table>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Курсы</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="course : ${courses}">
+        <td th:text="${course.id}"></td>
+        <td>
+            <a th:href="@{/courses/{courseId}(courseId=${course.id})}" th:text="${course.courseName}"></a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

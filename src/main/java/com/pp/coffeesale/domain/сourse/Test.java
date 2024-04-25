@@ -1,4 +1,4 @@
-package com.pp.coffeesale.domain.Course;
+package com.pp.coffeesale.domain.сourse;
 
 import com.pp.coffeesale.domain.users.Personal;
 import jakarta.persistence.*;

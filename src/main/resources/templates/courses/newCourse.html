@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Новый курс</title>
+</head>
+<body>
+<h1>
+    Создать новый курс
+</h1>
+<a data-th-href="@{/courses/}">&lAarr; К списку курсов</a>
+<form method="post" action="/courses/create">
+    <label>
+        Название курса:<br>
+        <input type="text" name="courseName">
+    </label><br>
+    <label>
+        Кто создает курс:<br>
+        Почта:<br>
+        <input type="email" name="authorEmail">
+    </label><br>
+    <label>
+        Список лекций:<br>
+        <input type="text" name="lectureId">
+    </label><br>
+    <label>
+        Список заданий:<br>
+        <input type="text" name="testId">
+    </label><br>
+    <button type="submit">Создать новый курс</button>
+</form>
+</body>
+</html>

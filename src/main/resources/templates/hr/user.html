@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${user.name}]]</title>
+</head>
+<body>
+<h1>
+    [[${user.name}]]
+</h1>
+<a data-th-href="@{/hr/users}">&lAarr; К пользователям </a>
+<h1 data-th-href="${user.name}"></h1>
+<ul>
+    <li><strong>ID</strong>: <span th:text="${user.id}"></span></li>
+    <li><strong>Name</strong>: <span th:text="${user.name}"></span></li>
+    <li><strong>Email</strong>: <span th:text="${user.email}"></span></li>
+    <li><strong>Role</strong>: <span th:text="${user.role}"></span></li>
+</ul>
+</body>
+</html>

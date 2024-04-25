@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Все пользователи</title>
+</head>
+<body>
+<h1>
+    Список пользователей
+</h1>
+<a data-th-href="@{/hr/create}">&lAarr; Создать нового пользователя </a>
+<table>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Пользователь</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td>
+            <a th:href="@{/hr/users/{userID}(userID=${user.id})}" th:text="${user.name}"></a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

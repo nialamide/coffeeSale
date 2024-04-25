@@ -1,7 +1,7 @@
 package com.pp.coffeesale.domain.users;
 
 
-import com.pp.coffeesale.domain.Course.Course;
+import com.pp.coffeesale.domain.сourse.Course;
 import com.pp.coffeesale.domain.Document;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -19,11 +19,17 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "Personal")
 public class Personal {
-    private String name;
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private String email;
+
+    private String password;
+
+    private String name;
 
     @OneToMany(mappedBy = "personal", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Document> documents;

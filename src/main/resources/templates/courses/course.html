@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${course.courseName}]]</title>
+</head>
+<body>
+<h1>
+    [[${course.courseName}]]
+</h1>
+<a data-th-href="@{/courses}">&lAarr; К курсам </a><br>
+<a data-th-href="@{/courses/{courseId}/edit(courseId=${course.id})}">&lAarr; Изменить </a>
+<h1 data-th-href="${course.courseName}"></h1>
+<ul>
+    <li><strong>ID</strong>: <span th:text="${course.id}"></span></li>
+    <li><strong>Название курса</strong>: <span th:text="${course.courseName}"></span></li>
+    <li><strong>Список лекций</strong>: <span th:text="${course.lectures}"></span></li>
+    <li><strong>Список заданий</strong>: <span th:text="${course.tests}"></span></li>
+</ul>
+</body>
+</html>

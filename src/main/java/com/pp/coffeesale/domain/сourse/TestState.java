@@ -1,4 +1,4 @@
-package com.pp.coffeesale.domain.Course;
+package com.pp.coffeesale.domain.сourse;
 
 public enum TestState {
     /**
