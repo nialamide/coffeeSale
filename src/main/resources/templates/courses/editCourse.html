@@ -8,25 +8,24 @@
 <h1>
     Изменить курс [[${course.courseName}]]
 </h1>
-<a data-th-href="@{/courses/{coursesId}(courseId=${course.id})}"> К курсу</a>
-
-<form method="post" action="@{'/courses/' + ${course.id} + '/edit'}">
+<a data-th-href="@{/courses/{courseId}(courseId=${course.id})}"> К курсу</a>
+<form method="post" data-th-action="@{/courses/{courseId}/edit(courseId=${course.id})}">
     <label>
         Название курса:<br>
-        <input type="text" name="courseName" th:value="${course.courseName}">
+        <input type="text" name="courseName" th:value="${course?.courseName}">
     </label><br>
     <label>
         Кто создает курс:<br>
         Почта:<br>
-        <input type="email" name="authorEmail" th:value="${course.hr.email}">
+        <input type="email" name="authorEmail" th:value="${course?.hr.email}">
     </label><br>
     <label>
         Список лекций:<br>
-        <input type="text" name="lectureId" th:value="${course.lectures}">
-    </label><br>
-    <label>
-        Список заданий:<br>
-        <input type="text" name="testId" th:value="${course.tests}">
+        <tr th:each="lecture : ${lectures}">
+            <td>
+                <a th:href="@{/lectures/{lectureId}(lectureId=${lecture.id})}">[[${lecture.title}]]</a>
+            </td>
+            <td><input type="checkbox" name="lectureId" th:value="${lecture.id}"></td>
     </label><br>
     <button type="submit">Изменить</button>
 </form>

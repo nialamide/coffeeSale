@@ -14,7 +14,12 @@
 <ul>
     <li><strong>ID</strong>: <span th:text="${course.id}"></span></li>
     <li><strong>Название курса</strong>: <span th:text="${course.courseName}"></span></li>
-    <li><strong>Список лекций</strong>: <span th:text="${course.lectures}"></span></li>
+    <li><strong>Список лекций</strong>:<label>
+        <tr th:each="lecture : ${lectures}">
+            <td>
+                <a th:href="@{/lectures/{lectureId}(lectureId=${lecture.id})}">[[${lecture.title}]]</a>
+            </td>
+    </label><br></li>
     <li><strong>Список заданий</strong>: <span th:text="${course.tests}"></span></li>
 </ul>
 </body>

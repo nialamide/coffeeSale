@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Все вопросы</title>
+</head>
+<body>
+<h1>
+    Список всех вопросов
+</h1>
+<a data-th-href="@{/questions/create}">&lAarr; Создать новую лекцию</a>
+<table>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Вопросы</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="question : ${questions}">
+        <td th:text="${question.id}"></td>
+        <td>
+            <a th:href="@{/questions/{questionId}(questionId=${question.id})}" th:text="${question.title}"></a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

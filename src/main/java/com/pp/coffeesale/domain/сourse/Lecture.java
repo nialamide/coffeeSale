@@ -26,9 +26,8 @@ public class Lecture {
     private LectureState state;
 
     @ManyToOne
-    @JoinColumn(name = "lecture_id")
+    @JoinColumn(name = "course_id")
     private Course course;
-
 
 }
 

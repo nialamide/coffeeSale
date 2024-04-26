@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Все тесты</title>
+</head>
+<body>
+<h1>
+    Список всех тестов
+</h1>
+<a data-th-href="@{/lectures/create}">&lAarr; Создать новый тест</a>
+<table>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Тесты</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="question : ${questions}">
+        <td th:text="${question.id}"></td>
+        <td>
+            <a th:href="@{/questions/{questionId}(questionId=${question.id})}" th:text="${question.title}"></a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

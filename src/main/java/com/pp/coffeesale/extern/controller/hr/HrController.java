@@ -1,9 +1,12 @@
-package com.pp.coffeesale.extern.controller;
+package com.pp.coffeesale.extern.controller.hr;
 
 
 import com.pp.coffeesale.app.service.AdministratorService;
+import com.pp.coffeesale.app.service.PersonalService;
 import com.pp.coffeesale.domain.users.Administrator;
-import com.pp.coffeesale.extern.controller.record.NewUserDTO;
+import com.pp.coffeesale.domain.users.Personal;
+import com.pp.coffeesale.domain.users.UsersRole;
+import com.pp.coffeesale.extern.record.NewUserDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -19,14 +22,17 @@ public class HrController {
 
     private static final Logger log = LoggerFactory.getLogger(HrController.class);
     private final AdministratorService administratorService;
+    private final PersonalService personalService;
 
-    public HrController(AdministratorService administratorService) {
+    public HrController(AdministratorService administratorService, PersonalService personalService) {
         this.administratorService = administratorService;
+        this.personalService = personalService;
     }
 
     @GetMapping("/users")
     public String getAllUsers(Model model) {
         model.addAttribute("users", this.administratorService.getAllAdministratorForHr());
+        model.addAttribute("personals", this.administratorService.getAllPersonalForHr());
         return "hr/users";
     }
 
@@ -37,11 +43,19 @@ public class HrController {
 
     @PostMapping("/create")
     public String saveNewUser(NewUserDTO newUserDTO) {
-        Administrator administrator = new Administrator();
-        administrator.setRole(newUserDTO.getRole());
-        administrator.setName(newUserDTO.getName());
-        administrator.setEmail(newUserDTO.getEmail());
-        this.administratorService.createAdministrator(administrator);
+        if (newUserDTO.getRole().equals(UsersRole.HR) || newUserDTO.getRole().equals(UsersRole.ADMINISTRATOR)) {
+            Administrator administrator = new Administrator();
+            administrator.setRole(newUserDTO.getRole());
+            administrator.setName(newUserDTO.getName());
+            administrator.setEmail(newUserDTO.getEmail());
+            this.administratorService.createAdministrator(administrator);
+        } else {
+            Personal p = new Personal();
+            p.setRole(newUserDTO.getRole());
+            p.setName(newUserDTO.getName());
+            p.setEmail(newUserDTO.getEmail());
+            personalService.createPersonal(p);
+        }
         return "redirect:/hr/users";
     }
 

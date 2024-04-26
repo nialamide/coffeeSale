@@ -15,6 +15,8 @@ public class Test {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String title;
+
     @ManyToOne
     @JoinColumn(name = "personal_id")
     private Personal personal;
@@ -30,5 +32,13 @@ public class Test {
     private TestState testState;
 
     private LocalDate createDate;
+
+    public void setQuestions(Question question) {
+        this.questions.add(question);
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions.addAll(questions);
+    }
 }
 

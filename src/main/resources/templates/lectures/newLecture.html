@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Новая лекция</title>
+</head>
+<body>
+<h1>
+    Создать новую лекцию
+</h1>
+<a data-th-href="@{/lectures/}">&lAarr; К списку лекций</a>
+<form method="post" action="/lectures/create">
+    <label>
+        Название лекции:<br>
+        <input type="text" name="title">
+    </label><br>
+    <label>
+        Описание лекции:<br>
+        <input type="text" name="description">
+    </label><br>
+    <label>
+        Лекция:<br>
+        <input type="text" name="urlContent">
+    </label><br><br>
+    <button type="submit">Создать новую лекцию</button>
+</form>
+</body>
+</html>

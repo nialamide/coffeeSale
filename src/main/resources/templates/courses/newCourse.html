@@ -21,7 +21,11 @@
     </label><br>
     <label>
         Список лекций:<br>
-        <input type="text" name="lectureId">
+        <tr th:each="lecture : ${lectures}">
+            <td>
+                <a th:href="@{/lectures/{lectureId}(lectureId=${lecture.id})}">[[${lecture.title}]]</a>
+            </td>
+            <td><input type="checkbox" name="lectureId" th:value="${lecture.id}"></td>
     </label><br>
     <label>
         Список заданий:<br>

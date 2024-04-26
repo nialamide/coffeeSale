@@ -52,19 +52,22 @@ public class CourseService {
     }
 
     public void updateCourse(Long id, String courseName, String authorEmail, List<Long> testsId, List<Long> lecturesId) {
-        this.courseRepository.findById(id).ifPresent(course -> {
+        courseRepository.findById(id).ifPresent(course -> {
+            log.info("course name: " + course.getCourseName());
+            log.info("course name: " + courseName);
             course.setCourseName(courseName);
             course.setHr(administratorService.getAdminByEmail(authorEmail).get());
             List<Test> tests = new ArrayList<>();
-            testsId.forEach(testId -> {
-                testService.getTestById(testId).ifPresent(tests::add);
-            });
+//            testsId.forEach(testId -> {
+//                testService.getTestById(testId).ifPresent(tests::add);
+//            });
             List<Lecture> lectures = new ArrayList<>();
-            lecturesId.forEach(lectureId -> {
-                lectureService.getLectureById(lectureId).ifPresent(lectures::add);
-            });
+//            lecturesId.forEach(lectureId -> {
+//                lectureService.getLectureById(lectureId).ifPresent(lectures::add);
+//            });
             course.replaceTest(tests);
             course.replaceLecture(lectures);
+            courseRepository.save(course);
         });
     }
 }

@@ -11,6 +11,7 @@ import java.util.List;
 
 @Entity
 @Data
+@ToString
 @Table(name = "course")
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,12 +23,13 @@ public class Course {
 
     private String courseName;
 
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     private List<Test> tests;
 
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     @Setter(AccessLevel.NONE)
     private List<Lecture> lectures;
+
 
     @ManyToOne
     @JoinColumn(name = "personal_id")

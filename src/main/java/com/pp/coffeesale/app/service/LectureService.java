@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -35,5 +36,24 @@ public class LectureService {
         }
         log.info("Error lecture found");
         return Optional.empty();
+    }
+
+    public List<Lecture> getAllLectures() {
+        log.info("Lectures found");
+        return lectureRepository.findAll();
+    }
+
+    public List<Lecture> getAllLecturesForCourse(Long courseId) {
+        return lectureRepository.findAllByCourseId(courseId);
+    }
+
+    public void updateLecture(Long id, String title, String description, String urlContent) {
+        getLectureById(id).ifPresent(lecture -> {
+            lecture.setTitle(title);
+            lecture.setDescription(description);
+            lecture.setUrlContent(urlContent);
+            lectureRepository.save(lecture);
+            log.info("Lecture updated");
+        });
     }
 }

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Новый вопрос</title>
+</head>
+<body>
+<h1>
+    Создать новый вопрос
+</h1>
+<a data-th-href="@{/questions/}">&lAarr; К списку вопросов</a>
+<form method="post" action="/questions/create">
+    <label>
+        Название вопроса:<br>
+        <input type="text" name="title">
+    </label><br>
+    <label>
+        Описание вопроса:<br>
+        <input type="text" name="description">
+    </label><br>
+    <label>
+        Правильный ответ:<br>
+        <input type="text" name="answer">
+    </label><br><br>
+    <button type="submit">Создать новую лекцию</button>
+</form>
+</body>
+</html>

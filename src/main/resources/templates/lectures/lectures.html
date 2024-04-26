@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Все лекции</title>
+</head>
+<body>
+<h1>
+    Список всех лекций
+</h1>
+<a data-th-href="@{/lectures/create}">&lAarr; Создать новую лекцию</a>
+<table>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Лекции</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="lecture : ${lectures}">
+        <td th:text="${lecture.id}"></td>
+        <td>
+            <a th:href="@{/lectures/{lectureId}(lectureId=${lecture.id})}" th:text="${lecture.title}"></a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

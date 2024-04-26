@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменить курс [[${lecture.title}]]</title>
+</head>
+<body>
+<h1>
+    Изменить лекцию [[${lecture.title}]]
+</h1>
+<a data-th-href="@{/lectures/}"> Ко всем лекциям</a>
+<form method="post" data-th-action="@{/lectures/{lectureId}/edit(lectureId=${lecture.id})}">
+    <label>
+        Название курса:<br>
+        <input type="text" name="title" th:value="${lecture?.title}">
+    </label><br>
+    <label>
+        Название курса:<br>
+        <input type="text" name="description" th:value="${lecture?.description}">
+    </label><br>
+    <label>
+        Ссылка:<br>
+        <input type="text" name="urlContent" th:value="${lecture?.urlContent}">
+    </label><br>
+    <button type="submit">Изменить</button>
+</form>
+</body>
+</html>

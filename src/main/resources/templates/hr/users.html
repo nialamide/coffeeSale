@@ -13,7 +13,7 @@
     <thead>
     <tr>
         <th>#</th>
-        <th>Пользователь</th>
+        <th>Администраторы и HR</th>
     </tr>
     </thead>
     <tbody>
@@ -21,6 +21,20 @@
         <td th:text="${user.id}"></td>
         <td>
             <a th:href="@{/hr/users/{userID}(userID=${user.id})}" th:text="${user.name}"></a>
+        </td>
+    </tr>
+    </tbody>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Другие</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="personal : ${personals}">
+        <td th:text="${personal.id}"></td>
+        <td>
+            <a th:href="@{/hr/users/{personalId}(personalId=${personal.id})}" th:text="${personal.name}"></a>
         </td>
     </tr>
     </tbody>

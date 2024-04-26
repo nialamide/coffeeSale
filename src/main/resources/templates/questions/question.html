@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${question.title}]]</title>
+</head>
+<body>
+<h1>
+    [[${question.title}]]
+</h1>
+<a data-th-href="@{/lectures}">&lAarr; К лекциям </a><br>
+<a data-th-href="@{/questions/{questionId}/edit(questionId=${question.id})}">&lAarr; Изменить </a>
+<h1 data-th-href="${question.title}"></h1>
+<ul>
+    <li><strong>ID</strong>: <span th:text="${question.id}"></span></li>
+    <li><strong>Название</strong>: <span th:text="${question.title}"></span></li>
+    <li><strong>Описании</strong>: <span th:text="${question.description}"></span></li>
+    <li><strong>Ответ на вопрос</strong>: <span th:text="${question.answer}"></span></li>
+</ul>
+</body>
+</html>

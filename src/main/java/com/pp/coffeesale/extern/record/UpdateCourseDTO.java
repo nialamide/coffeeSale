@@ -1,4 +1,5 @@
-package com.pp.coffeesale.extern.controller.record;
+package com.pp.coffeesale.extern.record;
+
 
 import jakarta.annotation.Nonnull;
 import jakarta.validation.constraints.NotEmpty;
@@ -9,9 +10,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class CoursesDTO {
-
-    Long id;
+public class UpdateCourseDTO {
 
     @NotEmpty
     @Pattern(regexp = "^[A-Z][a-z][А-Я][а-я]+\\s[A-Z][a-z][А-Я][а-я]+$")

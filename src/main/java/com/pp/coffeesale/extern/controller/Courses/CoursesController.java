@@ -1,4 +1,4 @@
-package com.pp.coffeesale.extern.controller;
+package com.pp.coffeesale.extern.controller.Courses;
 
 
 import com.pp.coffeesale.app.service.AdministratorService;
@@ -7,7 +7,7 @@ import com.pp.coffeesale.app.service.LectureService;
 import com.pp.coffeesale.app.service.TestService;
 import com.pp.coffeesale.domain.users.Administrator;
 import com.pp.coffeesale.domain.сourse.Course;
-import com.pp.coffeesale.extern.controller.record.CoursesDTO;
+import com.pp.coffeesale.extern.record.CoursesDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -36,7 +36,8 @@ public class CoursesController {
     }
 
     @GetMapping("create")
-    public String getNewCourse() {
+    public String getNewCourse(Model model) {
+        model.addAttribute("lectures", this.lectureService.getAllLectures());
         return "courses/newCourse";
     }
 
