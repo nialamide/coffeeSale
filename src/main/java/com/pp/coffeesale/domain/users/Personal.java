@@ -1,8 +1,8 @@
 package com.pp.coffeesale.domain.users;
 
 
-import com.pp.coffeesale.domain.сourse.Course;
 import com.pp.coffeesale.domain.Document;
+import com.pp.coffeesale.domain.сourse.Course;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,7 +19,6 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "Personal")
 public class Personal {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

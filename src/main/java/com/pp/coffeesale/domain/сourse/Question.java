@@ -16,6 +16,8 @@ public class Question {
 
     private String description;
 
+    private String RightAnswer;
+
     private String answer;
 
     private int grade;
@@ -24,6 +26,6 @@ public class Question {
     private QuestionState state;
 
     @ManyToOne
-    @JoinColumn(name = "question_id")
+    @JoinColumn(name = "test_id")
     private Test test;
 }

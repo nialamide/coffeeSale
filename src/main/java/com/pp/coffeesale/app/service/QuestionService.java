@@ -36,11 +36,11 @@ public class QuestionService {
         return question;
     }
 
-    public void updateQuestion(Long id, String title, String description, String answer) {
+    public void updateQuestion(Long id, String title, String description, String rightAnswer) {
         questionRepository.findById(id).ifPresent(question -> {
             question.setTitle(title);
             question.setDescription(description);
-            question.setAnswer(answer);
+            question.setRightAnswer(rightAnswer);
             questionRepository.save(question);
             log.info("Question was updated with id:{}", id);
         });

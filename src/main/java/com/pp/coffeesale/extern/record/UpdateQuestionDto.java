@@ -1,4 +1,4 @@
-package com.pp.coffeesale.extern.controller.questions;
+package com.pp.coffeesale.extern.record;
 
 import lombok.Data;
 
@@ -10,5 +10,7 @@ public class UpdateQuestionDto {
     private String description;
 
     private String answer;
+
+    private String rightAnswer;
 
 }

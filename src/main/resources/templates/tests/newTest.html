@@ -5,22 +5,23 @@
     <title>Новый тест</title>
 </head>
 <body>
-<h1>
-    Создать новый тест
-</h1>
-<a data-th-href="@{/tests/}">&lAarr; К списку тестов</a>
+<h1>Создать новый тест</h1>
+<a data-th-href="@{/tests}">&lAarr; К списку тестов</a>
 <form method="post" action="/tests/create">
-    <label>
-        Название теста:<br>
+    <label>Название теста:<br>
         <input type="text" name="title">
     </label><br>
-    <label>
-        Список вопросов:<br>
-        <tr th:each="test : ${tests}">
-            <td>
-                <a th:href="@{/tests/{testId}(testId=${test.id})}">[[${test.title}]]</a>
-            </td>
-            <td><input type="checkbox" name="testId" th:value="${test.id}"></td>
+    <label>Список вопросов:<br>
+        <th:block th:each="question : ${questions}">
+            <tr>
+                <td>
+                    <a th:href="@{/questions/{questionId}(questionId=${question.id})}">[[${question.title}]]</a>
+                </td>
+                <td>
+                    <input type="checkbox" name="selectedQuestionIds" th:value="${question.id}">
+                </td>
+            </tr>
+        </th:block>
     </label><br><br>
     <button type="submit">Создать новый тест</button>
 </form>

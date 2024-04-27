@@ -10,4 +10,5 @@ public class NewUserDTO {
     String email;
     String password;
     UsersRole role;
+    String urls;
 }

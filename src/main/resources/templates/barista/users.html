@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Все пользователи</title>
+</head>
+<body>
+<h1>
+    Список пользователей
+</h1>
+<a data-th-href="@{/barista/create}">&lAarr; Создать нового пользователя </a>
+<table>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Бариста и стажеры</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="personal : ${personals}">
+        <td th:text="${personal.id}"></td>
+        <td>
+            <a th:href="@{/barista/users/{personalId}(personalId=${personal.id})}" th:text="${personal.name}"></a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

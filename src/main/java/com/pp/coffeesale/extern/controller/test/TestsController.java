@@ -11,11 +11,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Controller
-@RequestMapping("/lectures")
+@RequestMapping("/tests")
 @RequiredArgsConstructor
 @Slf4j
 public class TestsController {
@@ -26,28 +28,33 @@ public class TestsController {
     @GetMapping
     public String getALlLectures(Model model) {
         model.addAttribute("tests", this.testService.getAllTest());
-        return "tests/test";
+        return "tests/tests";
     }
 
     @GetMapping("create")
-    public String createLecture() {
+    public String createLecture(Model model) {
+        model.addAttribute("questions", this.questionService.getAllQuestions());
         return "tests/newTest";
     }
 
     @PostMapping("create")
-    public String create(TestDTO testDTO) {
+    public String create(TestDTO testDTO, @RequestParam(value = "test", required = false) List<Long> selectedQuestionIds) {
         if (testDTO != null) {
             Test test = new Test();
             test.setTitle(testDTO.getTitle());
-            testDTO.getQuestions().stream()
-                    .map(id -> {
-                        questionService.getQuestionById(id).ifPresent(test::setQuestions);
-                        return null;
-                    });
+            log.info("selectedQuestionIds: " + selectedQuestionIds);
+            if (selectedQuestionIds != null && !selectedQuestionIds.isEmpty()) {
+                selectedQuestionIds.forEach(questionId -> {
+                    log.info(String.valueOf(questionId));
+                    questionService.getQuestionById(questionId).ifPresent(test::setQuestions);
+                });
+            }
             test.setCreateDate(LocalDate.now());
             log.info("Создался новый тест");
-            return "redirect:/questions/%d".formatted(test.getId());
+            this.testService.createTest(test);
+            return "redirect:/tests/%d".formatted(test.getId());
         }
-        return "redirect:/questions";
+        return "redirect:/tests/";
     }
+
 }

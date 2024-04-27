@@ -29,8 +29,8 @@ public class AdministratorService {
 
     @Autowired
     public AdministratorService(AdministratorRepository administratorRepository,
-                                PersonalRepository personalRepository, PersonalService personalService,
-                                @Lazy CourseService courseService, LectureService lectureService) {
+                                PersonalRepository personalRepository, @Lazy PersonalService personalService,
+                                @Lazy CourseService courseService, @Lazy LectureService lectureService) {
         this.administratorRepository = administratorRepository;
         this.personalRepository = personalRepository;
         this.personalService = personalService;

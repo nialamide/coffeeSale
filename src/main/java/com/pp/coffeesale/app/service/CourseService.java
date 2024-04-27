@@ -7,6 +7,7 @@ import com.pp.coffeesale.domain.сourse.Lecture;
 import com.pp.coffeesale.domain.сourse.Test;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -58,13 +59,17 @@ public class CourseService {
             course.setCourseName(courseName);
             course.setHr(administratorService.getAdminByEmail(authorEmail).get());
             List<Test> tests = new ArrayList<>();
-//            testsId.forEach(testId -> {
-//                testService.getTestById(testId).ifPresent(tests::add);
-//            });
+            if (testsId != null) {
+                testsId.forEach(testId -> {
+                    testService.getTestById(testId).ifPresent(tests::add);
+                });
+            }
             List<Lecture> lectures = new ArrayList<>();
-//            lecturesId.forEach(lectureId -> {
-//                lectureService.getLectureById(lectureId).ifPresent(lectures::add);
-//            });
+            if (lecturesId != null) {
+                lecturesId.forEach(lectureId -> {
+                    lectureService.getLectureById(lectureId).ifPresent(lectures::add);
+                });
+            }
             course.replaceTest(tests);
             course.replaceLecture(lectures);
             courseRepository.save(course);

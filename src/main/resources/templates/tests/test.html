@@ -6,19 +6,21 @@
 </head>
 <body>
 <h1>
-    [[${lecture.title}]]
+    [[${test.title}]]
 </h1>
-<a data-th-href="@{/tests}">&lAarr; К лекциям </a><br>
+<a data-th-href="@{/tests}">&lAarr; К тестам </a><br>
 <a data-th-href="@{/tests/{testId}/edit(testId=${test.id})}">&lAarr; Изменить </a>
-<h1 data-th-href="${lecture.title}"></h1>
+<h1 data-th-href="${test.title}"></h1>
 <ul>
     <li><strong>ID</strong>: <span th:text="${test.id}"></span></li>
-    <li><strong>Список вопросов</strong>: <span th:text="${test.title}">
-                <tr th:each="test : ${testes}">
-            <td>
-                <a th:href="@{/tests/{testId}/edit(testId=${test.id})}">[[${test.title}]]</a>
-            </td>
-    </span></li>
+    <li><strong>Список вопросов</strong>:
+        <th:block th:each="question : ${questions}">
+            <tr>
+                <td>
+                    <a th:href="@{/questions/{questionId}(questionId=${question.id})}">[[${question.title}]]</a>
+            </tr>
+        </th:block>
+        </li>
 </ul>
 </body>
 </html>

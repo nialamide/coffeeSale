@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/lectures")
+@RequestMapping("/questions")
 @RequiredArgsConstructor
 @Slf4j
 public class QuestionsController {
@@ -22,20 +22,20 @@ public class QuestionsController {
 
     @GetMapping
     public String getALlQuestions(Model model) {
-        model.addAttribute("question", this.questionService.getAllQuestions());
-        return "questions/newQuestion";
+        model.addAttribute("questions", this.questionService.getAllQuestions());
+        return "questions/questions";
     }
 
-    @GetMapping("create")
+    @GetMapping("/create")
     public String createQuestions() {
         return "questions/newQuestion";
     }
 
-    @PostMapping("create")
+    @PostMapping("/create")
     public String create(QuestionDTO questionDTO) {
         if (questionDTO != null) {
             Question question = new Question();
-            question.setAnswer(question.getAnswer());
+            question.setRightAnswer(questionDTO.getRightAnswer());
             question.setTitle(questionDTO.getTitle());
             question.setDescription(questionDTO.getDescription());
             this.questionService.createQuestion(question);

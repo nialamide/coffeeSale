@@ -8,19 +8,19 @@
 <h1>
     Изменить вопрос [[${question.title}]]
 </h1>
-<a data-th-href="@{/lectures/}"> Ко всем вопросам</a>
+<a data-th-href="@{/questions/}"> Ко всем вопросам</a>
 <form method="post" data-th-action="@{/questions/{questionId}/edit(questionId=${question.id})}">
     <label>
         Название вопроса:<br>
         <input type="text" name="title" th:value="${question?.title}">
     </label><br>
     <label>
-        Название курса:<br>
+        Описание вопроса:<br>
         <input type="text" name="description" th:value="${question?.description}">
     </label><br>
     <label>
         Ответ на вопрос:<br>
-        <input type="text" name="urlContent" th:value="${question?.answer}">
+        <input type="text" name="rightAnswer" th:value="${question?.rightAnswer}">
     </label><br>
     <button type="submit">Изменить</button>
 </form>

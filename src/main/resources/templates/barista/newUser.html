@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Новый пользователь</title>
+</head>
+<body>
+<h1>
+    Создать нового пользователя
+</h1>
+<a data-th-href="@{/barista/users}">&lAarr; К списку пользователей</a>
+<form method="post" action="/barista/create">
+    <label>
+        Имя пользователя:<br>
+        <input type="text" name="name">
+    </label><br>
+    <label>
+        Почта пользователя:<br>
+        <input type="email" name="email">
+    </label><br>
+    <label>
+        Пароль для пользователя:<br>
+        <input type="password" name="password">
+    </label>
+    <fieldset>
+        <legend>Укажите роль пользователя, которого вы хотите создать</legend>
+        <div>
+            <input type="radio" id="BARISTA" name="role" value="BARISTA"/>
+            <label for="BARISTA">BARISTA</label>
+        </div>
+        <div>
+            <input type="radio" id="TRAINEE" name="role" value="TRAINEE"/>
+            <label for="TRAINEE">TRAINEE</label>
+        </div>
+    </fieldset>
+    <button type="submit">Создать пользователя</button>
+</form>
+</body>
+</html>
