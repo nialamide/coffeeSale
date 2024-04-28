@@ -28,7 +28,7 @@ public class TestController {
 
     @GetMapping
     public String getCourseById(Model model, @PathVariable("testId") Long testId) {
-        model.addAttribute("questions", questionRepository.findAllByTestId(testId));
+        model.addAttribute("questions", questionRepository.findAll());
         return "tests/test";
     }
 
