@@ -37,6 +37,7 @@ public class BaristasController {
         p.setRole(newUserDTO.getRole());
         p.setName(newUserDTO.getName());
         p.setEmail(newUserDTO.getEmail());
+        p.setPassword(newUserDTO.getPassword());
         personalService.createPersonal(p);
         return "redirect:/barista/users";
     }

@@ -50,12 +50,14 @@ public class HrController {
             administrator.setRole(newUserDTO.getRole());
             administrator.setName(newUserDTO.getName());
             administrator.setEmail(newUserDTO.getEmail());
+            administrator.setPassword(newUserDTO.getPassword());
             this.administratorService.createAdministrator(administrator);
         } else {
             Personal p = new Personal();
             p.setRole(newUserDTO.getRole());
             p.setName(newUserDTO.getName());
             p.setEmail(newUserDTO.getEmail());
+            p.setPassword(newUserDTO.getPassword());
             personalService.createPersonal(p);
         }
         return "redirect:/hr/users";
