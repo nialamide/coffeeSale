@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Изменить вопрос [[${test.title}]]</title>
+    <title>Изменить тест [[${test.title}]]</title>
+    <!-- Подключаем стили Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <h1>
@@ -10,22 +12,20 @@
 </h1>
 <a data-th-href="@{/questions/}"> Ко всем вопросам</a>
 <form method="post" data-th-action="@{/tests/{testId}/edit(testId=${test.id})}">
-    <label>Название теста:<br>
-        <input type="text" name="title">
-    </label><br>
-    <label>Список вопросов:<br>
-        <th:block th:each="question : ${questions}">
-            <tr>
-                <td>
-                    <a th:href="@{/questions/{questionId}(questionId=${question.id})}">[[${question.title}]]</a>
-                </td>
-                <td>
-                    <input type="checkbox" name="selectedQuestionIds" th:value="${question.id}">
-                </td>
-            </tr>
-        </th:block>
-    </label><br><br>
-    <button type="submit">Изменить</button>
+    <div class="mb-3">
+        <label for="title" class="form-label">Название теста:</label>
+        <input type="text" id="title" name="title" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Список вопросов:</label>
+        <div class="form-check">
+            <th:block th:each="question : ${questions}">
+                <input type="checkbox" id="question-${question.id}" name="selectedQuestionIds" th:value="${question.id}" class="form-check-input">
+                <label for="question-${question.id}" class="form-check-label">[[${question.title}]]</label><br>
+            </th:block>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Изменить</button>
 </form>
 </body>
 </html>

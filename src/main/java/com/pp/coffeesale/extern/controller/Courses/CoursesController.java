@@ -38,6 +38,7 @@ public class CoursesController {
     @GetMapping("create")
     public String getNewCourse(Model model) {
         model.addAttribute("lectures", this.lectureService.getAllLectures());
+        model.addAttribute("tests", this.testService.getAllTest());
         return "courses/newCourse";
     }
 
@@ -50,16 +51,20 @@ public class CoursesController {
             course.setHr(administrator.get());
             course.setCourseName(coursesDTO.getCourseName());
             course.setId(coursesDTO.getId());
-            coursesDTO.getLectureId().stream()
-                    .map(id -> {
-                        lectureService.getLectureById(id).ifPresent(course::setLectures);
-                        return null;
-                    });
-            coursesDTO.getTestId().stream().map(id -> {
-                testService.getTestById(id).ifPresent(course::setTests);
-                return null;
-            });
-            log.info(String.valueOf(course.getHr()));
+            if (coursesDTO.getLectureId() != null) {
+                coursesDTO.getLectureId().stream()
+                        .map(id -> {
+                            lectureService.getLectureById(id).ifPresent(course::setLectures);
+                            return null;
+                        });
+            }
+
+            if (coursesDTO.getTestId() != null) {
+                coursesDTO.getTestId().stream().map(id -> {
+                    testService.getTestById(id).ifPresent(course::setTests);
+                    return null;
+                });
+            }
             courseService.saveCourse(course);
             return "redirect:/courses";
         }

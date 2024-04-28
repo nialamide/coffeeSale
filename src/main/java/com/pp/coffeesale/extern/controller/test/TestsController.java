@@ -1,5 +1,6 @@
 package com.pp.coffeesale.extern.controller.test;
 
+import com.pp.coffeesale.app.service.LectureService;
 import com.pp.coffeesale.app.service.QuestionService;
 import com.pp.coffeesale.app.service.TestService;
 import com.pp.coffeesale.domain.сourse.Test;
@@ -24,10 +25,12 @@ public class TestsController {
 
     public final TestService testService;
     private final QuestionService questionService;
+    private final LectureService lectureService;
 
     @GetMapping
     public String getALlLectures(Model model) {
         model.addAttribute("tests", this.testService.getAllTest());
+        model.addAttribute("lecture", this.lectureService.getAllLectures());
         return "tests/tests";
     }
 

@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Новый пользователь</title>
+    <!-- Подключаем стили Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <h1>
@@ -12,40 +14,40 @@
 <form method="post" action="/hr/create">
     <label>
         Имя пользователя:<br>
-        <input type="text" name="name">
+        <input type="text" name="name" class="form-control">
     </label><br>
     <label>
         Почта пользователя:<br>
-        <input type="email" name="email">
+        <input type="email" name="email" class="form-control">
     </label><br>
     <label>
         Пароль для пользователя:<br>
-        <input type="password" name="password">
+        <input type="password" name="password" class="form-control">
     </label>
     <fieldset>
         <legend>Укажите роль пользователя, которого вы хотите создать</legend>
-        <div>
-            <input type="radio" id="HR" name="role" value="HR"/>
-            <label for="HR">HR</label>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="HR" name="role" value="HR"/>
+            <label class="form-check-label" for="HR">HR</label>
         </div>
-        <div>
-            <input type="radio" id="ADMINISTRATOR" name="role" value="ADMINISTRATOR"/>
-            <label for="ADMINISTRATOR">ADMINISTRATOR</label>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="ADMINISTRATOR" name="role" value="ADMINISTRATOR"/>
+            <label class="form-check-label" for="ADMINISTRATOR">ADMINISTRATOR</label>
         </div>
-        <div>
-            <input type="radio" id="MANAGER" name="role" value="MANAGER"/>
-            <label for="MANAGER">MANAGER</label>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="MANAGER" name="role" value="MANAGER"/>
+            <label class="form-check-label" for="MANAGER">MANAGER</label>
         </div>
-        <div>
-            <input type="radio" id="BARISTA" name="role" value="BARISTA"/>
-            <label for="BARISTA">BARISTA</label>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="BARISTA" name="role" value="BARISTA"/>
+            <label class="form-check-label" for="BARISTA">BARISTA</label>
         </div>
-        <div>
-            <input type="radio" id="TRAINEE" name="role" value="TRAINEE"/>
-            <label for="TRAINEE">TRAINEE</label>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="TRAINEE" name="role" value="TRAINEE"/>
+            <label class="form-check-label" for="TRAINEE">TRAINEE</label>
         </div>
     </fieldset>
-    <button type="submit">Создать пользователя</button>
+    <button type="submit" class="btn btn-primary">Создать пользователя</button>
 </form>
 </body>
 </html>

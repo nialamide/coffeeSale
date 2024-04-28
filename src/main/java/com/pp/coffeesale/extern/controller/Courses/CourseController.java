@@ -3,6 +3,7 @@ package com.pp.coffeesale.extern.controller.Courses;
 
 import com.pp.coffeesale.app.service.CourseService;
 import com.pp.coffeesale.app.service.LectureService;
+import com.pp.coffeesale.app.service.TestService;
 import com.pp.coffeesale.domain.сourse.Course;
 import com.pp.coffeesale.extern.record.UpdateCourseDTO;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +21,7 @@ public class CourseController {
 
     public final CourseService courseService;
     private final LectureService lectureService;
+    private final TestService testService;
 
     @ModelAttribute("course")
     public Course getProduct(@PathVariable("courseId") Long courseId) {
@@ -27,14 +29,16 @@ public class CourseController {
     }
 
     @GetMapping
-    public String getCourseById(@PathVariable("courseId") Long courseId, Model model) {
-        model.addAttribute("lectures", this.lectureService.getAllLecturesForCourse(courseId));
+    public String getCourseById(Model model) {
+        model.addAttribute("lectures", this.lectureService.getAllLectures());
+        model.addAttribute("tests", this.testService.getAllTest());
         return "courses/course";
     }
 
     @GetMapping("/edit")
     public String getCourseEditById(Model model) {
         model.addAttribute("lectures", this.lectureService.getAllLectures());
+        model.addAttribute("tests", this.testService.getAllTest());
         return "courses/editCourse";
     }
 

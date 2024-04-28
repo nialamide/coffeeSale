@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Optional;
+
 @Controller
 @RequestMapping("/hr")
 public class HrController {
@@ -32,7 +34,7 @@ public class HrController {
     @GetMapping("/users")
     public String getAllUsers(Model model) {
         model.addAttribute("users", this.administratorService.getAllAdministratorForHr());
-        model.addAttribute("personals", this.administratorService.getAllPersonalForHr());
+        model.addAttribute("personals", this.personalService.getAll());
         return "hr/users";
     }
 
@@ -62,7 +64,14 @@ public class HrController {
     @GetMapping("users/{userId:\\d+}")
     public String getUserById(@PathVariable("userId") Long userId, Model model) {
         log.info("Работает");
-        model.addAttribute("user", this.administratorService.findAdministratorById(userId).orElseThrow());
+        Optional<Administrator> administrator = administratorService.findAdministratorById(userId);
+        Optional<Personal> personal = personalService.getPersonalById(userId);
+        if (administrator.isPresent() && (administrator.get().getRole().equals(UsersRole.ADMINISTRATOR)
+                || administrator.get().getRole().equals(UsersRole.HR))) {
+            model.addAttribute("user", this.administratorService.findAdministratorById(userId).orElseThrow());
+        } else if (personal.isPresent()) {
+            model.addAttribute("user", this.personalService.getPersonalById(userId).orElseThrow());
+        }
         return "hr/user";
     }
 }

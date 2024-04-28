@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>[[${user.name}]]</title>
+    <!-- Подключаем стили Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <h1>
@@ -10,11 +12,11 @@
 </h1>
 <a data-th-href="@{/barista/users}">&lAarr; К пользователям </a>
 <h1 data-th-href="${user.name}"></h1>
-<ul>
-    <li><strong>ID</strong>: <span th:text="${user.id}"></span></li>
-    <li><strong>Name</strong>: <span th:text="${user.name}"></span></li>
-    <li><strong>Email</strong>: <span th:text="${user.email}"></span></li>
-    <li><strong>Role</strong>: <span th:text="${user.role}"></span></li>
+<ul class="list-group">
+    <li class="list-group-item"><strong>ID</strong>: <span th:text="${user.id}"></span></li>
+    <li class="list-group-item"><strong>Name</strong>: <span th:text="${user.name}"></span></li>
+    <li class="list-group-item"><strong>Email</strong>: <span th:text="${user.email}"></span></li>
+    <li class="list-group-item"><strong>Role</strong>: <span th:text="${user.role}"></span></li>
 </ul>
 </body>
 </html>

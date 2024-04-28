@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Изменить вопрос [[${question.title}]]</title>
+    <!-- Подключаем стили Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <h1>
@@ -10,19 +12,19 @@
 </h1>
 <a data-th-href="@{/questions/}"> Ко всем вопросам</a>
 <form method="post" data-th-action="@{/questions/{questionId}/edit(questionId=${question.id})}">
-    <label>
-        Название вопроса:<br>
-        <input type="text" name="title" th:value="${question?.title}">
-    </label><br>
-    <label>
-        Описание вопроса:<br>
-        <input type="text" name="description" th:value="${question?.description}">
-    </label><br>
-    <label>
-        Ответ на вопрос:<br>
-        <input type="text" name="rightAnswer" th:value="${question?.rightAnswer}">
-    </label><br>
-    <button type="submit">Изменить</button>
+    <div class="mb-3">
+        <label for="title" class="form-label">Название вопроса:</label>
+        <input type="text" id="title" name="title" th:value="${question?.title}" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Описание вопроса:</label>
+        <input type="text" id="description" name="description" th:value="${question?.description}" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label for="rightAnswer" class="form-label">Ответ на вопрос:</label>
+        <input type="text" id="rightAnswer" name="rightAnswer" th:value="${question?.rightAnswer}" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Изменить</button>
 </form>
 </body>
 </html>
